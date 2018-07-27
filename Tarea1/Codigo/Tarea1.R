@@ -7,6 +7,7 @@ resp=orig["root"]
 cat("El valor de la raiz calculado por la maquina: ",toString(format(resp,nsmall = 8)))
 #Obtencion de datos por consola
 n=as.integer(readline(prompt="Ingrese el numero de particiones, mayor a 1: "))
+E=as.double(readline(prompt="Ingrese la precision: "))
 xl=as.double(readline(prompt="Ingrese valor xl: "))
 xu=as.double(readline(prompt="Ingrese valor xu: "))
 #Se revisa si es na en caso de que la funcion no este definida en ese valor
@@ -28,12 +29,16 @@ if (f<=0 ){
   points(resp,eq(as.numeric(resp)),col="red")
   abline(h=0)
   abline(v=0)
+  d=(abs(xl-xu)/n)
+  #**NUEVO**: Se calcula el numero de iteraciones
+  itera=(log((d/E),n))
+  cat("El valor de iteraciones teorico ",toString(round(itera,0)),"\n")
   #Se inicia la n-seccion
-  while(f!=0)
+  cont=0
+  while(d>E)
   {
+    
     neg=FALSE
-    #e calcula la distancia total entre los limites dados y se guarda en d
-    d=(abs(xl-xu)/n)
     #Se calculan los n+1 numeros que seran los nuevos limites a estudiar
     x<-0:n
     y<-c(0:n)
@@ -59,9 +64,11 @@ if (f<=0 ){
       }
       i=i+1
     }
-    
+    #e calcula la distancia total entre los limites dados y se guarda en d
+    d=(abs(xl-xu)/n)
+    cont=cont+1
   }
-  
+  cat("# de Iteraciones: ",cont, "\n")
   #Se informa el valor aproximado
   if(eq(xl)==0)
   {
