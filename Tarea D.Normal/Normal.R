@@ -30,6 +30,7 @@ Z<-function(x)
 tabla<-function(a,b)
 {
   enc<-seq(0,0.00009,by=0.00001)
+  
   cat("Z\t")
   for(i in c(1:(length(enc)-1)))
   {
@@ -37,6 +38,12 @@ tabla<-function(a,b)
   }
   cat("\n")
   cont<-seq(a,b,by=0.0001)
+  v1<-c(0,cont)
+  v2<-c(cont,0)
+  va<-((v1+v2)/2)
+  vy<-z(va)
+  vy<-vy[2:(length(va)-1)]
+  draw(a,b)
   for(i in c(1:(length(cont)-1)))
   {
     if(i%%10==1)
@@ -51,6 +58,12 @@ tabla<-function(a,b)
     
     
   }
+}
+draw<-function(a,b)
+{
+ cord.x<-c(a,seq(a,b,0.00001),1)
+ cord.y<-c(0,dnorm(seq(a,b,0.00001)),0)
+ polygon(cord.x,cord.y,col="Red")
 }
 curve(z,xlim = c(-4,4),ylim=c(0,0.4))
 area(-1,1,0.1)
