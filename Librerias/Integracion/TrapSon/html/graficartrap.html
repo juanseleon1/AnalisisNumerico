@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: graficartrap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for graficartrap {TrapSon}"><tr><td>graficartrap {TrapSon}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+graficartrap
+</h2>
+
+<h3>Description</h3>
+
+<p>Genera la grafica de los trapecios correspondientes al calculo de la integral dada
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+graficartrap(func, n, a, b)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>func</code></td>
+<td>
+
+<p>Funcion a graficar por medio del metodo del trapecio
+</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+
+<p>Numero de particiones para graficar
+</p>
+</td></tr>
+<tr valign="top"><td><code>a</code></td>
+<td>
+
+<p>Limite inferior de la integral
+</p>
+</td></tr>
+<tr valign="top"><td><code>b</code></td>
+<td>
+
+<p>Limite superior de la integral
+</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Instalar la libreria &quot;ggplot2&quot; para generar los graficos
+</p>
+
+
+<h3>Value</h3>
+
+<p>Genera la grafica de los trapecios correspondientes a la integral
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+##---- Should be DIRECTLY executable !! ----
+##-- ==&gt;  Define data, use random,
+##--	or do  help(data=index)  for the standard data sets.
+
+## The function is currently defined as
+function (func, n, a, b)
+{
+    if (a == 0) {
+        seg &lt;- seq.int(a + 0.001, b, length.out = n)
+    }
+    else {
+        seg &lt;- seq.int(a, b, length.out = n)
+    }
+    fx &lt;- vector(length = length(seg))
+    for (i in 1:length(seg)) {
+        fx[i] &lt;- func(seg[i])
+    }
+    df &lt;- data.frame(xend = seg, y = rep(0, n), yend = fx, yend1 = c(fx[2:n],
+        fx[n]), xend1 = c(seg[2:n], seg[n]))
+    ggplot(data = df) + stat_function(fun = func, size = 1.05,
+        alpha = 0.75, color = "blue") + geom_segment(aes(x = xend,
+        y = y, xend = xend, yend = yend)) + geom_ribbon(aes(x = xend,
+        ymin = y, ymax = yend), fill = "black", alpha = 0.3) +
+        xlim(c(a, b))
+  }
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TrapSon</em> version 0.1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,11 @@
+Package: TrapSon
+Type: Package
+Title: TrapSon (Metodo del trapecio/Simpson)
+Version: 0.1.0
+Author: Valentina Escobar, Pedro Escobar
+Maintainer: The package maintainer <valentina.escobar@javeriana.edu.co>
+Description: Este paquete facilita la integracion y graficacion de funciones que pueden
+    ser evaluados por el metodo del trapecio y el metodo de Simpson
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true

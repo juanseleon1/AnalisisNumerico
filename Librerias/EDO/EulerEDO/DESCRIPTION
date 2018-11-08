@@ -1,0 +1,23 @@
+Package: EulerEDO
+Type: Package
+Title: Metodo De Euler Para EDO De Primer Orden
+Version: 0.1.0
+Date: 2018-11-7
+Author: c(
+    person("Felipe Andres", "Gutierrez Naranjo", email="felipe_gutierrez@javeriana.edu.co"),
+    person("Jonathan Esteban", "Molina Castanieda", email="molina_jonathan@javeriana.edu.co"))
+Maintainer: Felipe Gutierrez <felipe_gutierrez@javeriana.edu.co>
+Description: Paquete que contiene funciones para resolver, gra-
+    ficar y hallar el error absoluto de ecuaciones diferencia-
+    les ordinarias de primer orden, a base de una funcion dy.
+    El paquete NO podra ser instalado si los paquetes 
+    "pracma", "graphics" y "phaseR" no estan cargados en su 
+    sesion de R previamente.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
+Depends: R (>= 3.1.0)
+Imports: pracma, graphics, phaseR
+NeedsCompilation: no
+Packaged: 2018-11-06 22:25:41 UTC; salageneral
